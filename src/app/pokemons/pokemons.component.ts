@@ -13,9 +13,27 @@ export class PokemonsComponent {
 
   constructor(private pokemonService: PokemonService) {}
 
+
+
+  addPokemon(pokemonName: string):void{
+    const KEY_Pokemon = "ulubionePokemony"
+   
+    let savedPokemons = localStorage.getItem(KEY_Pokemon);
+    let pokemonsList: string[] = savedPokemons !== null? JSON.parse(savedPokemons) : [];
+    
+    pokemonsList.push(pokemonName);
+
+    localStorage.setItem(KEY_Pokemon, JSON.stringify(pokemonsList));
+  }
+
   ngOnInit(): void {
     this.pokemonService.getPokemons().subscribe(pokemons => {
       this.pokemons = pokemons;
     });
+
+   
   }
+
+  
+
 }

@@ -15,6 +15,7 @@ export class PokemonDetailsComponent implements OnInit{
   constructor(private route: ActivatedRoute, private pokemonService: PokemonService) { }
 
   ngOnInit(): void {
+    
     const idParam = this.route.snapshot.paramMap.get('id');
       if (idParam) {
         const id = +idParam;
